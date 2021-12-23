@@ -10,14 +10,16 @@ def is_prime(n):
 
 def solution(n):
     answer = 0
-    for i in range(2,n+1):
-        if(i % 2 == 0):
-            continue
+    if(n == 1): return 0
+    if(n == 2): return 1
+    
+    for i in range(3,n+1,2):
         if(is_prime(i)):
             print(i)
             answer += 1
     if(n>=2): answer += 1
+    
     return answer
 
-n = 10
+n = 5
 print(solution(n))
