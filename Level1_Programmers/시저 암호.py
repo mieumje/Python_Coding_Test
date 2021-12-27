@@ -1,5 +1,23 @@
-# A = 65 ~ Z = 90
-# a = 97 ~ z = 122
+startPointUpperCase = 64 # A = 65 ~ Z = 90
+startPointLowerCase = 96 # a = 97 ~ z = 122
+endPointUpperCase = 90
+endPointLowerCase = 122
+
+def asciiToChrLowerCase(i,n):
+    tmpASCII = ord(i)
+    if(tmpASCII + n > endPointLowerCase):
+        tmpChr = chr(startPointLowerCase + n - (endPointLowerCase - ord(i)))
+    else:
+        tmpChr = chr(tmpASCII + n)
+    return tmpChr
+
+def asciiToChrUpperCase(i,n):
+    tmpASCII = ord(i)
+    if(tmpASCII + n > endPointUpperCase):
+        tmpChr = chr(startPointUpperCase + n - (endPointUpperCase - ord(i)))
+    else:
+        tmpChr = chr(tmpASCII + n)
+    return tmpChr
 
 def solution(s, n):
     answer = ''
@@ -7,23 +25,9 @@ def solution(s, n):
         if(i == " "):
             answer += " "
         if(i.isupper()):
-            #print(f"{i} is Upper")
-            #print(ord(i) + n, ord(i), n - (90 - ord(i)))
-            if((ord(i) + n) > 90):
-                x = 64
-                #print(chr(x + 26 - n))
-                answer += chr(x + n - (90 - ord(i)))
-            else:
-                answer += chr(ord(i) + n)
+            answer += asciiToChrUpperCase(i,n)
         if(i.islower()):
-            #print(f"{i} is Lower")
-            #print(ord(i) + n)
-            if((ord(i) + n) > 122):
-                x = 96
-                #print(chr(x + 26 - n))
-                answer += chr(x + n - (122 - ord(i)))
-            else:
-                answer += chr(ord(i) + n)
+            answer += asciiToChrLowerCase(i,n)
     return answer
 
 s = "bC"
