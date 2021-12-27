@@ -4,7 +4,7 @@ def solution(s):
     for i in tmpArr:
         for x in range(0,len(i)):
             if(x%2 == 0): answer += i[x].upper()
-            else: answer += i[x]
+            else: answer += i[x].lower()
         answer += " "
     answer = answer[:-1]
     return answer
