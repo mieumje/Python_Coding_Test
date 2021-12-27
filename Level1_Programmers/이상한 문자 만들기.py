@@ -6,6 +6,7 @@ def solution(s):
             if(x%2 == 0): answer += i[x].upper()
             else: answer += i[x]
         answer += " "
+    answer = answer[:-1]
     return answer
 
 s = "try hello world"
