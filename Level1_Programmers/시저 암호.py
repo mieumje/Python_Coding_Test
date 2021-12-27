@@ -1,28 +1,36 @@
+# A = 65 ~ Z = 90
+# a = 97 ~ z = 122
+
 def solution(s, n):
     answer = ''
     for i in s:
-        tmpASCII = ord(i)
-        if(tmpASCII == 122):
-            tmpASCII = 96
-        if(tmpASCII == 90):
-            tmpASCII = 64
-        if(tmpASCII == 32):
+        if(i == " "):
             answer += " "
-        else:
-            tmpChr = chr(tmpASCII + n)
-            answer += tmpChr
+        if(i.isupper()):
+            #print(f"{i} is Upper")
+            #print(ord(i) + n, ord(i), n - (90 - ord(i)))
+            if((ord(i) + n) > 90):
+                x = 64
+                #print(chr(x + 26 - n))
+                answer += chr(x + n - (90 - ord(i)))
+            else:
+                answer += chr(ord(i) + n)
+        if(i.islower()):
+            #print(f"{i} is Lower")
+            #print(ord(i) + n)
+            if((ord(i) + n) > 122):
+                x = 96
+                #print(chr(x + 26 - n))
+                answer += chr(x + n - (122 - ord(i)))
+            else:
+                answer += chr(ord(i) + n)
     return answer
 
-s = "AB"
-n = 1
+s = "bC"
+n = 25
 print(solution(s, n))    
 
-s = "z"
-n = 1
+s = "AaZz"
+n = 25
 print(solution(s, n))    
 
-s = "a B z"
-n = 4
-print(solution(s, n))    
-
-print(ord(" "))
