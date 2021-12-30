@@ -2,6 +2,9 @@
 ## Python Coding Test & Algorithm
 ---
 * #### 프로그래머스 Level 1
+* <details><summary>CLICK ME</summary>
+안녕-난-영준이야
+</details>    
     - 문자열 내 p와 y의 개수
     - 문자열 내림차순으로 배치하기
     - 문자열 다루기 기본
