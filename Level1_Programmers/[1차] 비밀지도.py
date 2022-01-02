@@ -14,12 +14,12 @@ def solution(n, arr1, arr2):
     answer = []
     
     for i in range(0, n):
-        x, y = ten_to_two(arr1[i], n), ten_to_two(arr2[i], n)
+        x = ten_to_two(arr1[i] | arr2[i], n)
         result = ""
         for j in range(0, n):
-            if x[j] == '1' or y[j] == '1':
+            if x[j] == '1':
                 result += "#"
-            elif x[j] == '0' or y[j] == '0':
+            else:
                 result += " "
         answer.append(result)
             
