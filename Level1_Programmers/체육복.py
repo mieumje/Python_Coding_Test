@@ -1,6 +1,9 @@
 def solution(n, lost, reserve):    
     answer = n - len(lost)  # 수업을 들을 수 있는 학생 수 = 전체 학생 수 - 체육복이 없는 학생 수
     
+    lost.sort()
+    reserve.sort()
+    
     for i in lost:          # 체육복이 없는 학생 중 여벌의 체육복이 있는 학생의 경우
         if i in reserve:
             lost.remove(i)
