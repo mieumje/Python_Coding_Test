@@ -4,18 +4,18 @@ def solution(n, lost, reserve):
     lost.sort()
     reserve.sort()
     
-    for i in lost:          # 체육복이 없는 학생 중 여벌의 체육복이 있는 학생의 경우
+    for i in lost[:]:          # 체육복이 없는 학생 중 여벌의 체육복이 있는 학생의 경우
         if i in reserve:
             lost.remove(i)
             reserve.remove(i)
             answer += 1
     
-    for i in lost:          # 체육복이 없는 학생이 자신의 앞, 뒤 학생에게 체육복을 빌린 경우
-        if i-1 in reserve:
+    for i in lost[:]:          # 체육복이 없는 학생이 자신의 앞, 뒤 학생에게 체육복을 빌린 경우
+        if i-1 in reserve[:]:
             answer += 1
             reserve.remove(i-1)
             continue
-        elif i+1 in reserve:
+        elif i+1 in reserve[:]:
             answer += 1
             reserve.remove(i+1)
     
