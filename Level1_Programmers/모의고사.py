@@ -10,20 +10,21 @@ def solution(answers):
     arr2 = [2, 1, 2, 3, 2, 4, 2, 5]         # 수포자 2
     arr3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]   # 수포자 3
     
-    answer_cnt = [0,0,0]                    # [수포자 1 정답 수, 수포자 2 정답 수, 수포자 3 정답 수]
-    answer = []
+    answer_cnt = {                          
+        1 : 0,                              # 수포자 1의 정답 수
+        2 : 0,                              # 수포자 2의 정답 수
+        3 : 0                               # 수포자 3의 정답 수
+    }
     
     for i in range(0, len(answers)):
         if answers[i] == arr1[i % len(arr1)]:
-            answer_cnt[0] += 1
-        if answers[i] == arr2[i % len(arr2)]:
             answer_cnt[1] += 1
-        if answers[i] == arr3[i % len(arr3)]:
+        if answers[i] == arr2[i % len(arr2)]:
             answer_cnt[2] += 1
+        if answers[i] == arr3[i % len(arr3)]:
+            answer_cnt[3] += 1
 
-    for i in range(0, len(answer_cnt)):
-        if answer_cnt[i] == max(answer_cnt):
-            answer.append(i+1)
+    answer = [k for k, v in answer_cnt.items() if(v == max(answer_cnt.values()))]
 
     return answer
 
@@ -32,5 +33,5 @@ def solution(answers):
 # [1,2,3,4,5]	[1]
 # [1,3,2,4,2]	[1,2,3]
 
-answers = [1,3,2,4,2]
+answers = [1,2,3,4,5]
 print(solution(answers))
