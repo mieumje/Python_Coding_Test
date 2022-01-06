@@ -3,28 +3,24 @@
 nums에 있는 숫자들 중 서로 다른 3개를 골라 더했을 때 소수가 되는 경우의 개수를 return
 """
 from itertools import combinations
-
+import math
 def is_prime(num):
-    for i in range(2, num):
-        check_prime = 0
-        if num % i == 0:
-            check_prime = 1 # 소수가 아님
-            break
+    check_prime = True
+    N = int(math.sqrt(num))
     
-    if check_prime != 0: # 소수가 아닐 때 0 return
-        return 0
-    else:               # 소수이면 1 return
-        return 1
+    for i in range(2,N+1):
+        if(num % i == 0):
+            check_prime = False
+            return False
+    return check_prime
 
 def solution(nums):
     answer = 0
-    
-    b = list(combinations(nums, 3)) # nums 중 3개로 조합할 수 있는 숫자
-    
-    for i in range(0, len(b)):
-        x = b[i][0] + b[i][1] + b[i][2]
-        result = is_prime(x)
-        answer += result
+    tmp_list = list(combinations(nums,3))
+    tmp_sum = 0
+    for i in range(0, len(tmp_list)):
+        tmp_sum = tmp_list[i][0] + tmp_list[i][1] + tmp_list[i][2]
+        if(is_prime(tmp_sum)) : answer += 1
         
     return answer
 
@@ -32,3 +28,6 @@ def solution(nums):
 # nums	        result
 # [1,2,3,4]	    1
 # [1,2,7,6,4]	4
+
+nums = [1,2,3,4]
+print(solution(nums))
