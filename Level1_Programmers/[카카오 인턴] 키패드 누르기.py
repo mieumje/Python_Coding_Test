@@ -13,7 +13,17 @@
 # 4  5  6
 # 7  8  9
 # 10 11 12
-
+def check_left_right(L,R,number,hand):
+    if L > R:
+        return "R", number
+    elif R > L:
+        return "L", number
+    else: # L == R
+        if hand == "right":
+            return "R", number
+        else:
+            return "L", number
+       
 def solution(numbers, hand):
     answer = ""
     left = 10       # 왼손 위치
@@ -33,19 +43,13 @@ def solution(numbers, hand):
             distance_to_number_L = (absL // 3) + (absL % 3) # 왼손에서 눌러야 할 다음 번호까지의 거리
             distance_to_number_R = (absR // 3) + (absR % 3) # 오른손에서 눌러야 할 다음 번호까지의 거리
                                                             # // 3 : 상하 움직임, % 3 : 좌우 움직임
-            if distance_to_number_L > distance_to_number_R:
-                answer += "R"
-                right = number
-            elif distance_to_number_R > distance_to_number_L:
-                answer += "L"
-                left = number
-            else:
-                if hand == "right":
-                    answer += "R"
-                    right = number
-                else:
-                    answer += "L"
-                    left = number
+            next_hand, next_number = check_left_right(distance_to_number_L, distance_to_number_R, number, hand)
+            if next_hand == 'R':
+                answer += next_hand
+                right = next_number
+            if next_hand == 'L':
+                answer += next_hand
+                left = next_number
     return answer
 
 # hand는 "left" 또는 "right" 입니다.
