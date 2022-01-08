@@ -56,4 +56,8 @@
 - 신규 아이디 추천<br>
 - 로또의 최고 순위와 최저 순위<br>
 </details>    
-
+## 프로그래머스 Level 2
+<details><summary>프로그래머스 Level 2</summary>
+- 문자열 압축<br>
+- 오픈채팅방<br>
+</details>
