@@ -55,7 +55,8 @@
 - 숫자 문자열과 영단어<br>
 - 신규 아이디 추천<br>
 - 로또의 최고 순위와 최저 순위<br>
-</details>    
+</details>
+    
 ## 프로그래머스 Level 2
 <details><summary>프로그래머스 Level 2</summary>
 - 문자열 압축<br>
