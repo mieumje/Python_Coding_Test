@@ -9,15 +9,15 @@
 # 3으로 나누었을 때
 # 1인 경우 > +1
 # 2인 경우 > +2
-# 3인 경우 > +3+1, +1한 만큼 n을 -1
+# 0인 경우 > +3+1, +1한 만큼 n을 -1
 def solution(n):
     answer = ''
     result = []
     while (n > 0):
         mod = n % 3
         if mod == 0:
-            mod = 4 # mod + 1, 3의 경우 mod가 0이라서 4로 설정
-            n = n - 1
+            mod = 4     # 0인 경우 > +3+1,
+            n = n - 1   # +1한 만큼 n을 -1
         result.append(str(mod))
         n = n // 3
     answer = ''.join(result[::-1])
