@@ -61,4 +61,6 @@
 <details><summary>프로그래머스 Level 2</summary>
 - 문자열 압축<br>
 - 오픈채팅방<br>
+- 멀쩡한 사각형<br>
+- 124 나라의 숫자<br>
 </details>
