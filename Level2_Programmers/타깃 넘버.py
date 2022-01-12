@@ -21,14 +21,15 @@ def solution(numbers, target):
             tmp.append(j + i)   # 해당 인덱스 값에 더하기
             tmp.append(j - 1)   # 해당 인덱스 값에 빼기
         arr = tmp               # 연산 후 arr 갱신
-    for i in arr:               # 더하기, 빼기의 모든 연산의 경우의 수를 탐색
-        if i == target:         # 타겟 넘버와 같을 때 answer += 1
-            answer += 1
+    # for i in arr:               # 더하기, 빼기의 모든 연산의 경우의 수를 탐색
+    #     if i == target:         # 타겟 넘버와 같을 때 answer += 1
+    #         answer += 1
+    answer = arr.count(target)
     return answer
 
 # 입출력 예
 # numbers	        target	return
 # [1, 1, 1, 1, 1]	3	    5
-numbers = [1,1,1,1,1]
+numbers = [1, 1, 1, 1, 1]
 target = 3
 print(solution(numbers,target))
