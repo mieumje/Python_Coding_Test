@@ -9,26 +9,16 @@
 b aa baa → bb aa → aa →
 의 순서로 문자열을 모두 제거할 수 있으므로 1을 반환합니다.
 """
-
-def a(tmp):
-    for i in range(0, len(tmp) - 1):
-        a, b = tmp[i], tmp[i+1]
-        if a == b:
-            tmp.remove(a)
-            tmp.remove(b)
-            return tmp
-    return False
-
 def solution(s):
-    tmp = list(s)
-    arr = []
-    while len(tmp) > 0:
-        if a(tmp):
-            arr = a(tmp)
-        if not a(tmp):
-            arr = tmp
-            break
-    if not arr:
+    tmp = []
+    for i in s:
+        if not tmp:
+            tmp.append(i)
+        elif (tmp[-1] == i):
+            tmp.pop()
+        else:
+            tmp.append(i)
+    if not tmp:
         return 1
     else:
         return 0
