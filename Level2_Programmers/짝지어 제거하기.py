@@ -21,12 +21,11 @@ def solution(s):
     if not tmp:
         return 1
     else:
-        return 0
+        return 0         
 
 # 입출력 예
 # s	        result
 # baabaa	1
 # cdcd	    0
-s = 'cdcd'
+s = 'baabaa'
 print(solution(s))
-m = list(s)
