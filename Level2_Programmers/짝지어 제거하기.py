@@ -12,21 +12,20 @@ b aa baa → bb aa → aa →
 def solution(s):
     tmp = []
     for i in s:
-        if not tmp:
+        if not tmp:             # tmp가 비어있을 때 비교할 문자 추가
             tmp.append(i)
-        elif (tmp[-1] == i):
+        elif (tmp[-1] == i):    # tmp에 원소가 있고, 마지막 원소와 비교할 문자가 같으면 pop
             tmp.pop()
-        else:
+        else:                   # tmp에 원소가 있고, 마지막 원소와 비교할 문자가 같지 않으면 push
             tmp.append(i)
     if not tmp:
         return 1
     else:
-        return 0
+        return 0         
 
 # 입출력 예
 # s	        result
 # baabaa	1
 # cdcd	    0
-s = 'cdcd'
+s = 'baabaa'
 print(solution(s))
-m = list(s)
