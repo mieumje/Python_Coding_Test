@@ -19,11 +19,9 @@ def solution(numbers, target):
         tmp = []    
         for j in arr:   # 더하기, 빼기 연산을 한 결과가 담긴 배열을 탐색
             tmp.append(j + i)   # 해당 인덱스 값에 더하기
-            tmp.append(j - 1)   # 해당 인덱스 값에 빼기
+            tmp.append(j - i)   # 해당 인덱스 값에 빼기
         arr = tmp               # 연산 후 arr 갱신
-    # for i in arr:               # 더하기, 빼기의 모든 연산의 경우의 수를 탐색
-    #     if i == target:         # 타겟 넘버와 같을 때 answer += 1
-    #         answer += 1
+    
     answer = arr.count(target)
     return answer
 
