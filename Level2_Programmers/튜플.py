@@ -10,8 +10,8 @@ def solution(s):
             except:
                 list[int(tmp)] = 1
             tmp = ""
-
-    answer = [k for k in list.keys()]
+    
+    answer = sorted(list, key = lambda x : list[x], reverse=True)
     
     return answer
 
