@@ -2,38 +2,35 @@
 한자리 숫자가 적힌 종이 조각이 흩어져있습니다. 흩어진 종이 조각을 붙여 소수를 몇 개 만들 수 있는지 알아내려 합니다.
 각 종이 조각에 적힌 숫자가 적힌 문자열 numbers가 주어졌을 때, 종이 조각으로 만들 수 있는 소수가 몇 개인지 return 
 """
-import math
 from itertools import permutations
+import math
+def is_prime(nums):
+    if nums == 0 or nums == 1:  # 입력된 숫자가 0 혹은 1일 경우 소수가 아님으로 return
+        return
+    else:
+        for i in range(2, int(math.sqrt(nums) + 1)):    # 2부터 입력된 숫자의 제곱근 + 1만큼 반복하면서 나누어 떨어지는지 판별
+            if nums % i == 0:                           # 나누어 떨어지면 소수가 아님
+                return
+    return True                 # 소수일 경우 return True
 
 def solution(numbers):
-    
     answer = 0
+    number = []
+    tmp = []
     
-    a = []
+    for i in numbers:   # 문자열 numbers의 한자리 숫자를 number 리스트에 push
+        number.append(i)
     
-    for i in numbers:
-        a.append(i)
+    for i in range(1,len(number)+1):    # number에 있는 한자리 숫자로 만들 수 있는 숫자의 종류
+        permute = list(permutations(number,i))
+        for j in permute:               # 한자리 수부터 len(number)만큼의 조합의 수
+            tmp.append(int(''.join(j))) # 생성된 숫자를 tmp 리스트에 push
+    number_permutation = list(set(tmp)) # tmp 리스트에서 중복 제거
     
-    p = []
-    
-    for i in range(1,len(numbers)+1):
-        permute = list(permutations(a,i))
-        for j in range(0,len(permute)):
-            p.append(int(''.join(permute[j])))
-    
-    arr = list(set(p))
-    
-    for i in range(0,len(arr)):
-        flag = 0
-        if arr[i] == 0 or arr[i] == 1:
-            continue
-        else:
-            for j in range(2,int(math.sqrt(arr[i]) + 1)):
-                if arr[i] % j == 0:
-                    flag = 1
-            if flag == 0:
-                answer += 1
-    
+    for i in number_permutation:        # 중복이 제거된 숫자의 조합에서 소수인지 아닌지 판별
+        if(is_prime(i)):                # 소수라면 answer += 1
+            answer += 1
+            
     return answer
 # 제한사항
 # numbers는 길이 1 이상 7 이하인 문자열입니다.
