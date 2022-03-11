@@ -1,6 +1,5 @@
-"# Python_Coding_Test" 
-## Python Coding Test & Algorithm
----
+# Python Coding Test & Algorithm
+
 ## 프로그래머스 Level 1
 <details><summary>프로그래머스 Level 1</summary>
 - 문자열 내 p와 y의 개수<br>
@@ -77,4 +76,9 @@
 - [카카오 인턴] 수식 최대화<br>
 - 거리두기 확인하기<br>
 - [1차] 뉴스 클러스터링<br>
+</details>
+
+## 이코테 with 파이썬
+<details><summary>Algorithm</summary>
+- 그리디(Greedy)
 </details>
