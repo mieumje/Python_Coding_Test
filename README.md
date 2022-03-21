@@ -81,4 +81,5 @@
 ## 이코테 with 파이썬
 <details><summary>Algorithm</summary>
 - 그리디(Greedy)
+- 구현
 </details>
