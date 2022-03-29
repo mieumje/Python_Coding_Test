@@ -1,6 +1,7 @@
 # Python Coding Test & Algorithm
 
 ## 프로그래머스 Level 1
+
 <details><summary>프로그래머스 Level 1</summary>
 - 문자열 내 p와 y의 개수<br>
 - 문자열 내림차순으로 배치하기<br>
@@ -78,7 +79,14 @@
 - [1차] 뉴스 클러스터링<br>
 </details>
 
+## 프로그래머스 Level 3
+
+<details><summary>프로그래머스 Level 3</summary>
+- 네트워크(DFS)
+</details>
+
 ## 이코테 with 파이썬
+
 <details><summary>Algorithm</summary>
 - 그리디(Greedy)
 - 구현
