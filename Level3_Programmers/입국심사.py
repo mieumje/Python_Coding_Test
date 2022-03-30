@@ -14,17 +14,17 @@ def solution(n, times):
     left = 1
     right = times[-1] * n
 
-    while left < right:
+    while left <= right:
         mid = math.trunc((left + right) / 2)
 
         sum = accumulate(mid, times)
         print(left, mid, right, sum)
-        if sum > n:
+        if sum >= n:
             right = mid - 1
         else:
             left = mid + 1
-    
-    return mid
+
+    return mid + 1
 
 
 # 입출력 예
