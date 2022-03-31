@@ -82,9 +82,11 @@
 ## 프로그래머스 Level 3
 
 <details><summary>프로그래머스 Level 3</summary>
+
 - 네트워크(DFS)
 - 여행경로(DFS)
 - 입국심사(이분탐색)
+- N-Queen(DFS)
 </details>
 
 ## 이코테 with 파이썬
