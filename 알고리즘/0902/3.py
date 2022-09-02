@@ -1,3 +1,5 @@
+import math
+
 def solution(n, k):
     answer = 0
     rev_base = ''
@@ -9,16 +11,7 @@ def solution(n, k):
     rev_base = rev_base[::-1]
     
     tmp = ''
-    arr = []
-    for i in rev_base:
-      if i == '0' and tmp != '':
-        arr.append(int(tmp))
-        tmp = ''
-        continue
-      tmp = tmp + i
-    
-    if tmp != '':
-      arr.append(int(tmp))
+    arr = rev_base.split('0')
     
     def check_prime(numb):
       if numb == 1:
@@ -26,15 +19,18 @@ def solution(n, k):
       if numb == 2:
         return True
       
-      for i in range(2, numb):
+      root = int(math.sqrt(numb) + 1)
+      
+      for i in range(2, root):
         if numb % i == 0:
           return False
         
       return True
     
     for i in arr:
-      if check_prime(i):
-        answer = answer + 1
+      if i == '': continue
+      if check_prime(int(i)):
+        answer += 1   
     
     return answer
   
