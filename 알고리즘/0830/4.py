@@ -1,71 +1,58 @@
 def solution(n, k, cmd):
-    global table, current
     current = k
-    table = {}
+    table = { i:[i - 1, i + 1] for i in range(n) }
     stack = []
-    answer = ''
+    answer = ['O'] * n
     
-    for i in range(n):
-      table[i] = 'O'
+    table[0] = [None, 1]
+    table[n - 1] = [n - 2, None]
     
-    last_idx = len(table) - 1
     
     for i in cmd:
-      command = i.split(' ')
-      
-      if command[0] == 'D':
-        idx = int(command[1])
-        for i in range(idx):
-          current = current + 1
-          if current > last_idx:
-            current = 0
-          while True:
-            if table[current] == 'O':
-              break
-            else:
-              current = current + 1
-              if current > last_idx:
-                current = 0
+      if len(i) > 1:
+        command, idx = i.split(' ')
+        idx = int(idx)
+        
+        if command == 'D':
+          for _ in range(idx):
+            current = table[current][1]
+        else:
+          for _ in range(idx):
+            current = table[current][0]
+      else:
+        if i == 'C':
+          answer[current] = 'X'
+          prev, next = table[current]
+          stack.append([prev, current, next])
           
-      if command[0] == 'U':
-        idx = int(command[1])
-        # current = (current + idx) % (n - 1)
-        for i in range(idx):
-          current = current - 1
-          if current < 0:
-            current = last_idx
-          while True:
-            if table[current] == 'O':
-              break
-            else:
-              current = current - 1
-              if current < 0:
-                current = last_idx
-        
-      if command[0] == 'C':
-        stack.append([current])
-        # print('delete', current)
-        table[current] = 'X'
-        
-        while True:
-          if current == last_idx:
-            current = current - 1
+          if next == None:
+            current = table[current][0]
           else:
-            current = current + 1
-            
-          if table[current] == 'O':
-            break
+            current = table[current][1]
           
-      if command[0] == 'Z':
-        restore_idx = stack.pop()[0]
-        # print('restore index is ', restore_idx)
-
-        table[restore_idx] = 'O'
+          if prev == None:
+            table[next][0] = None
+          elif next == None:
+            table[prev][1] = None
+          else:
+            table[prev][1] = next
+            table[next][0] = prev
+            
+        if i == 'Z':
+          prev, now, next = stack.pop()
+          answer[now] = 'O'
+          
+          if prev == None:
+            table[next][0] = now
+          elif next == None:
+            table[prev][1] = now
+          else:
+            table[prev][1] = now
+            table[next][0] = now
+      print(table)
+        
     
-    for i in table:
-      answer = answer + table[i]
-      
-    return answer
+    return "".join(answer)
     
   
 # n   k   cmd                                                                 result
