@@ -1,32 +1,32 @@
 def solution(n, lost, reserve):
-    answer = 0
+    answer = 9999
     
-    students = ['' for _ in range(n + 1)]
-    
+    students = [1 for _ in range(n + 1)]
+    students[0] = None
+    print(students[1:])
+    for i in lost:
+      students[i] = students[i] - 1
+    print(students[1:])
     for i in reserve:
-      if i in lost:
-        reserve.remove(i)
-        lost.remove(i)
-    
-    for i in range(1, n+1):
-      if i in lost:
-        if i - 1 in reserve:
-          students[i] = 'O'
-          lost.remove(i)
-          reserve.remove(i - 1)
-          continue
-        if i + 1 in reserve:
-          students[i] = 'O'
-          lost.remove(i)
-          reserve.remove(i + 1)
-          continue
-        students[i] = 'X'
-      else:
-        students[i] = 'O'
+      students[i] = students[i] + 1
+  
+    print(students[1:])
+    for i in range(1, len(students)):
+      if students[i] == 0 and i - 1 > 0 and students[i - 1] == 2:
+        students[i - 1] = students[i -1] - 1
+        students[i] = students[i] + 1
+        continue
+      if students[i] == 0 and i + 1 < n + 1 and students[i + 1] == 2:
+        students[i + 1] = students[i + 1] - 1
+        students[i] = students[i] + 1
+        continue
       
-    answer = students.count('O')
+    print(students[1:])
+    answer = n - students[1:].count(0)
     
+      
     return answer
+    
   
 # n     lost    reserve     return
 # 5     [2, 4]  [1, 3, 5]   5
