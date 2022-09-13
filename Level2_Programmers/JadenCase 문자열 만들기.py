@@ -1,19 +1,15 @@
 def solution(s):
-  answer = ' '
+  answer = ''
   
-  arr = s.split(' ')  
-  idx = 0
+  s = s.lower()
   
-  for word in arr:
-    if word[0].isdigit():
-      word = word[0] + word[1:].lower()
-    else:
-      word = word[0].upper() + word[1:].lower()
-    
-    arr[idx] = word
-    idx += 1
-  
-  answer = answer.join(arr)
+  if not s[0].isdigit():
+    s = s.replace(s[0], s[0].upper(), 1)
+   
+  for i in range(len(s)):
+    if s[i - 1] == ' ':
+      answer += s[i].upper()
+    else: answer += s[i]
   
   return answer
 
