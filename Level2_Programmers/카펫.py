@@ -2,9 +2,16 @@ def solution(brown, yellow):
   answer = []
   height = 0
   
+  if yellow % 2 != 0 and (yellow * 2) + 6 == brown:
+    answer = [yellow + 2, 3]
+    return answer
+  
   while True:
     height += 1
-    width = yellow // height
+    if yellow % height == 0: 
+      width = yellow // height
+    else:
+      continue
     
     if height > width: break
     
@@ -25,5 +32,4 @@ def solution(brown, yellow):
 
 brown = 8
 yellow = 1
-
 print(solution(brown, yellow))
