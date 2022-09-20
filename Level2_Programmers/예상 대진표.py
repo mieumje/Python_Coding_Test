@@ -2,14 +2,24 @@ import math
 
 def solution(n,a,b):
   answer = 0
-  if b % 2 == 0 and b - 1 == a:
-    answer += 1
-    return answer
+  
+  if a % 2 != 0 and a + 1 == b:
+    return answer + 1
+    
+  if a % 2 == 0 and a - 1 == b:
+    return answer + 1
+  
   while True:
+    if n == 1: break
+    n = n // 2
     a = math.ceil(a / 2)
     b = math.ceil(b / 2)
     answer += 1
-    if abs(a - b) == 1:
+    
+    if a % 2 != 0 and a + 1 == b:
+      break
+    
+    if a % 2 == 0 and a - 1 == b:
       break
   
   return answer + 1
