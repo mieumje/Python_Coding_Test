@@ -1,23 +1,15 @@
-import math
-
 def solution(n):
   ans = 0
   
-  dp = [math.inf] * 100000001
-  dp[1] = 1
-  dp[2] = 1
-  
-  if n < 3:
-    return dp[n]
-  for i in range(3, n + 1):
-    for j in range(i // 2, i):
-      if j == i // 2 and i % 2 == 0:
-        dp[i] = min(dp[i], dp[i // 2])
-      else:
-        dp[i] = min(dp[i], dp[j] + i - j)
-
-  ans = dp[n]
-  return ans
+  while True:
+    if n <= 2: break
+    if n % 2 == 0:
+      n /= 2
+    else:
+      n -= 1
+      ans += 1
+      
+  return ans + 1
 
 # N	    result
 # 5	    2
