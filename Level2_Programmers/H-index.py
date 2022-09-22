@@ -1,6 +1,8 @@
 def solution(citations):
   answer = 0
-    
+  if len(citations) == citations.count(0):
+    return 0
+  
   citations.sort(reverse = True)
   
   for i in range(len(citations)):
@@ -21,3 +23,4 @@ def solution(citations):
 
 print(solution(citations=[6, 5, 5, 5, 3, 2, 1, 0]))
 print(solution(citations=[4,4,4]))
+print(solution(citations=[0,0,0,0,0]))
