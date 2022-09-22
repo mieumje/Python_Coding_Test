@@ -1,23 +1,14 @@
 def solution(citations):
   answer = 0
     
-  h_index = 0
+  citations.sort(reverse = True)
   
-  while True:
-    high_cnt = 0
-    low_cnt = 0
-    for i in citations:
-      if h_index >= i:
-        high_cnt += 1
-      else:
-        low_cnt += 1
-    
-    if low_cnt <= h_index and h_index <= high_cnt:
+  for i in range(len(citations)):
+    if i + 1 <= citations[i]:
+      continue
+    else:
+      answer = i
       break
-    
-    h_index += 1
-    
-  answer = h_index
   
   return answer
 
@@ -25,4 +16,4 @@ def solution(citations):
 # [3, 0, 6, 1, 5]	          3
 # [6, 5, 5, 5, 3, 2, 1, 0]  4
 
-print(solution(citations=[3, 0, 6, 1, 5]))
+print(solution(citations=[6, 5, 5, 5, 3, 2, 1, 0]))
