@@ -10,6 +10,9 @@ def solution(citations):
       answer = i
       break
   
+  if answer == 0:
+    answer = len(citations)
+  
   return answer
 
 # citations	                return
@@ -17,3 +20,4 @@ def solution(citations):
 # [6, 5, 5, 5, 3, 2, 1, 0]  4
 
 print(solution(citations=[6, 5, 5, 5, 3, 2, 1, 0]))
+print(solution(citations=[4,4,4]))
