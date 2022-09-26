@@ -97,6 +97,7 @@
 - 행렬의 곱셈<br>
 - H-index<br>
 - 위장<br>
+- n^2 배열 자르기<br>
 </details>
 
 ## 프로그래머스 Level 3
