@@ -2,45 +2,29 @@ def solution(n, t, m, p):
   answer = ''
   
   def convert(n, q):
-    rev_base = ''
+    tmp = '0123456789ABCDEF'
+
+    n, mod = divmod(n, q)
     
-    while n > 0:
-      n, mod = divmod(n, q)
-      rev_base += str(mod)
-    
-    return rev_base[::-1]
+    if n == 0:
+      return tmp[mod]
+    else:
+      return convert(n, q) + tmp[mod]
   
-  nums = '0'
-  num = 1
+  nums = ''
+  num = 0
   
   while True:
     if len(nums) > m * t:
       break
-    if n == 16:
-      tmp = hex(num)[2:]
-    elif n == 10:
-      tmp = str(num)
-    elif n == 8:
-      tmp = oct(num)[2:]
-    elif n == 2:
-      tmp = bin(num)[2:]
-    else:
-      tmp = convert(num, n)
+
+    tmp = convert(num, n)
     num += 1
     nums += tmp
-  # print(nums)
-  turn = 0
-  for i in nums:
-    turn += 1
   
-    if len(answer) == t:
-      break
-    if turn == p:
-      answer += i if not i.isalpha() else i.upper()
-      
-    if turn >= m:
-      turn = 0
-      
+  while len(answer) < t:
+    answer += nums[p - 1]
+    p += m
   return answer
 
 # n	  t	  m	  p	  result
@@ -57,5 +41,5 @@ print(solution(n, t, m, p))
 n = 16
 t = 16
 m = 2
-p = 1
+p = 2
 print(solution(n, t, m, p))
