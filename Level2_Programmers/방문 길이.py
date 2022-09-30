@@ -1,37 +1,21 @@
 def solution(dirs):
-  arr = [[0] * 11 for _ in range(11)]
-  arr[5][5] = 1
-  answer = 0
+  records = set()
   cur_x, cur_y = 0, 0
-  dx = [0, 0, -1, 1] # 상, 하, 좌, 우 
-  dy = [1, -1, 0, 0] # 상, 하, 좌, 우
-  record = []
-  
   for dir in dirs:
-    nx, ny = 0, 0
-    if dir == 'U':
-      nx = cur_x + dx[0]
-      ny = cur_y + dy[0]
-    elif dir == 'D':
-      nx = cur_x + dx[1]
-      ny = cur_y + dy[1]
-    elif dir == 'L':
-      nx = cur_x + dx[2]
-      ny = cur_y + dy[2]
-    elif dir == 'R':
-      nx = cur_x + dx[3]
-      ny = cur_y + dy[3]
-    
-    if nx < -5 or ny < -5 or nx > 5 or ny > 5:
-      continue
-    tmp = [(cur_x, cur_y), (nx, ny)]
-    
-    if tmp not in record:
-      answer += 1
-      record.append(tmp)
-    
-    cur_x, cur_y = nx, ny
-  
+    if dir == 'U' and cur_y < 5:
+      records.add(((cur_x, cur_y), (cur_x, cur_y + 1)))
+      cur_y += 1    
+    elif dir == 'D' and cur_y > -5:
+      records.add(((cur_x, cur_y - 1), (cur_x, cur_y)))
+      cur_y -= 1  
+    elif dir == 'R' and cur_x < 5:
+      records.add(((cur_x, cur_y), (cur_x + 1, cur_y)))
+      cur_x += 1 
+    elif dir == 'L' and cur_x > -5:
+      records.add(((cur_x - 1, cur_y), (cur_x, cur_y)))
+      cur_x -= 1
+      
+  answer = len(records)
   return answer
 
 # dirs	      answer
