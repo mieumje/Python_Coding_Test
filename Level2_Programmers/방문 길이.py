@@ -2,9 +2,10 @@ def solution(dirs):
   arr = [[0] * 11 for _ in range(11)]
   arr[5][5] = 1
   answer = 0
-  cur_x, cur_y = 5, 5
-  dx = [-1, 1, 0, 0] # 상, 하, 좌, 우 
-  dy = [0, 0, -1, 1] # 상, 하, 좌, 우
+  cur_x, cur_y = 0, 0
+  dx = [0, 0, -1, 1] # 상, 하, 좌, 우 
+  dy = [1, -1, 0, 0] # 상, 하, 좌, 우
+  record = []
   
   for dir in dirs:
     nx, ny = 0, 0
@@ -20,22 +21,23 @@ def solution(dirs):
     elif dir == 'R':
       nx = cur_x + dx[3]
       ny = cur_y + dy[3]
-    if nx < 0 or ny < 0 or nx > 10 or ny > 10:
+    
+    if nx < -5 or ny < -5 or nx > 5 or ny > 5:
       continue
-    if arr[nx][ny] == 0:
-      arr[nx][ny] = 1
+    tmp = [(cur_x, cur_y), (nx, ny)]
+    
+    if tmp not in record:
       answer += 1
-
+      record.append(tmp)
+    
     cur_x, cur_y = nx, ny
-
-  if dirs[0] == "U" or dirs[0] == "D":
-    answer += 1  
+  
   return answer
 
 # dirs	      answer
 # "ULURRDLLU"	7
 # "LULLLLLLU"	7
 
-dirs = "ULURRDLLU"
+dirs = "LULLLLLLU"
 
 print(solution(dirs))
