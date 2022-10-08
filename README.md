@@ -105,6 +105,9 @@
 - 땅따먹기<br>
 - 스킬트리<br>
 - 방문 길이<br>
+- 모음 사전<br>
+- 게임 맵 최단 거리<br>
+- 다리를 지나는 트럭<br>
 </details>
 
 ## 프로그래머스 Level 3
@@ -122,4 +125,5 @@
 <details><summary>Algorithm</summary>
 - 그리디(Greedy)
 - 구현
+- 다이나믹 프로그래밍(DP)
 </details>
