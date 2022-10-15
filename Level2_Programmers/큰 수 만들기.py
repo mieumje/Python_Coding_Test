@@ -1,19 +1,20 @@
+from collections import deque
+
 def solution(number, k):
   answer = ''
-  arr = list(number)
-  result = [arr[0]]
-  arr.pop(0)
+  arr = deque(number)
+  result = [arr.popleft()]
   cnt = 0
   
   while cnt < k:
-    value = arr.pop(0)
+    value = arr.popleft()
     while result and result[-1] < value and cnt < k:
       result.pop()
       cnt += 1
     result.append(value)
 
   while arr:
-    result.append(arr.pop(0))
+    result.append(arr.popleft())
   
   answer = ''.join(result)
   
