@@ -21,7 +21,9 @@ def solution(m, musicinfos):
     music_code = replace_codes(infos[3])
     music_play_time = (int(HH) * 60) + int(MM) - (int(hh) * 60) + int(mm)
     music_code *= math.ceil(music_play_time / len(music_code))
+    music_code = music_code[:music_play_time]
     
+    print(music_code)
     if m not in music_code:
       continue
     idx += 1
@@ -41,7 +43,7 @@ def solution(m, musicinfos):
 # "CC#BCC#BCC#BCC#B"	["03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B"]	  "FOO"
 # "ABC"	              ["12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF"]	"WORLD"
 
-m = "CC#BCC#BCC#BCC#B"
-musicinfos = ["03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B"]
+m = "A#AD#"
+musicinfos = ["13:00,13:03,HAPPY,D#A#A"]
 
 print(solution(m, musicinfos))
