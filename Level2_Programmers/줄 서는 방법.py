@@ -1,8 +1,16 @@
-from itertools import permutations
+import math
 def solution(n, k):
   arr = [i for i in range(1, n + 1)]
-  lists = list(permutations(arr, len(arr)))
-  answer = [i for i in lists[k - 1]]
+  answer = []
+  
+  while n > 0:
+    n -= 1
+    div, mod = divmod(k, math.factorial(n))
+    
+    if mod == 0:
+      div -= 1
+    answer.append(arr.pop(div))
+    k = mod
     
   return answer
 
