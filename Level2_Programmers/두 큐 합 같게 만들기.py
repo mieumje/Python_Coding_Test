@@ -7,12 +7,11 @@ def solution(queue1, queue2):
   hap = sum(queue1) + sum(queue2)
     
   target = hap // 2
-  max_count = len(queue1) + len(queue2)
+  max_count = len(queue1) + len(queue2) + len(queue1) + len(queue2)
   curr = sum(queue1)
   cnt = 0
   
-  while cnt < max_count:
-
+  while cnt <= max_count:
     if curr < target:
       curr += queue2[0]
       queue1.append(queue2.popleft())
@@ -30,8 +29,9 @@ def solution(queue1, queue2):
 # [3, 2, 7, 2]	[4, 6, 5, 1]	2
 # [1, 2, 1, 2]	[1, 10, 1, 2]	7
 # [1, 1]	      [1, 5]	      -1
+# [3, 3, 3, 3]  [3, 3, 21, 3] 9
 
-queue1 = [3, 2, 7, 2]
-queue2 = [4, 6, 5, 1]
+queue1 = [3, 3, 3, 3]
+queue2 = [3, 3, 21, 3]
 
 print(solution(queue1, queue2))
