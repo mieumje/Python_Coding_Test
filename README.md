@@ -116,22 +116,23 @@
 - 줄 서는 방법<br>
 - 가장 큰 정사각형 찾기(dp)<br>
 - 전력망을 둘로 나누기<br>
+- 하노이 탑<br>
 </details>
 
 ## 프로그래머스 Level 3
 
 <details><summary>프로그래머스 Level 3</summary>
 
-- 네트워크(DFS)
-- 여행경로(DFS)
-- 입국심사(이분탐색)
-- N-Queen(DFS)
+- 네트워크(DFS)<br>
+- 여행경로(DFS)<br>
+- 입국심사(이분탐색)<br>
+- N-Queen(DFS)<br>
 </details>
 
 ## 이코테 with 파이썬
 
 <details><summary>Algorithm</summary>
-- 그리디(Greedy)
-- 구현
-- 다이나믹 프로그래밍(DP)
+- 그리디(Greedy)<br>
+- 구현<br>
+- 다이나믹 프로그래밍(DP)<br>
 </details>
