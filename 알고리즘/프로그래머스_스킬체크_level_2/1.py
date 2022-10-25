@@ -13,24 +13,18 @@ def solution(relation):
     combis.extend(coms)
   
   for combi in combis:
-    tmp = [''] * row
-    for c in combi:
-      idx = 0
-      for item in relation:
-        tmp[idx] += item[c]
-        idx += 1
-    # tmp = [item[key] for key in combi for item in relation]
-    print(tmp)
+    tmp = [tuple([item[key] for key in combi]) for item in relation]
+    
     if row == len(set(tmp)):
       flag = True
       for unique in uniques:
-        if set(unique) & set(combi):
+        if set(unique).issubset(set(combi)):
           flag = False
           break
       
       if flag:
         uniques.append(combi)
-  print(uniques)
+  
   return len(uniques)
 
 # relation	                        result
