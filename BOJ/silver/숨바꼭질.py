@@ -5,20 +5,16 @@ N, K = map(int, input().split())
 
 q = deque()
 cnt = 0
-q.append((N, cnt))
+q.append(N)
+checked = [0] * 100001
 
 while q:
-  X, cnt = q.popleft()
+  X = q.popleft()
   if X == K:
-    print(cnt)
+    print(checked[X])
     break
-  cnt += 1
   
-  for i in range(3):
-    if i == 0:
-      nx = X - 1
-    elif i == 1:
-      nx = X + 1
-    else:
-      nx = 2 * X
-    q.append((nx, cnt))
+  for i in (X - 1, X + 1, 2 * X):
+    if 0 <= i < 100001 and checked[i] == 0:
+      checked[i] = checked[X] + 1
+      q.append(i)
