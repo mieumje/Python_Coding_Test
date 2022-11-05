@@ -1,11 +1,11 @@
 import sys
 
-N = int(input())
+N = int(sys.stdin.readline())
 
 stack = []
 
 for _ in range(N):
-  inputs = input().split()
+  inputs = sys.stdin.readline().split()
   order = inputs[0]
   
   if order == 'push':
