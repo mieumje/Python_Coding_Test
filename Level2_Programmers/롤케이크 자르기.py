@@ -1,11 +1,23 @@
 def solution(topping):
+  from collections import Counter
   answer = 0
-  for i in range(1, len(topping)):
-    left, right = topping[:i], topping[i:]
-    left_length, right_length = len(list(set(left))), len(list(set(right)))
+  left = set()
+  right = Counter(topping)
+  
+  while topping:
+    item = topping.pop(0)
+    left.add(item)
+
+    if right[item] > 1:
+      right[item] -= 1
+    else:
+      del right[item]
     
-    if left_length == right_length:
-      answer += 1
+    if len(left) > len(right):
+      break
+
+    answer += 1 if len(left) == len(right) else 0
+  
   return answer
 
 # topping	                  result
