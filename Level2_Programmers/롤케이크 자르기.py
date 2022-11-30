@@ -1,11 +1,12 @@
 def solution(topping):
-  from collections import Counter
+  from collections import Counter, deque
+  topping = deque(topping)
   answer = 0
   left = set()
   right = Counter(topping)
   
   while topping:
-    item = topping.pop(0)
+    item = topping.popleft()
     left.add(item)
 
     if right[item] > 1:
